@@ -36,6 +36,20 @@ sits in front of APIs you already have. What it actually does:
 
 In short: a traffic cop + translator in front of your APIs, not a tool for creating them.
 
+## Where KrakenD Actually Differs From WSO2's Gateway
+
+Most of the list above — routing, auth enforcement, rate limiting, caching, CORS, hiding
+real backends — is standard gateway duty. WSO2's Gateway component does these too.
+
+The real difference is **aggregation**. In KrakenD, combining multiple backend calls into
+one response is a config block — list the backends under one endpoint, done. In WSO2,
+this isn't a built-in declarative feature; it takes custom mediation logic (a mediator/
+sequence you write) to achieve the same thing.
+
+So it's less "WSO2 can't do this" and more: KrakenD makes a few things (especially
+aggregation) much faster to set up, while WSO2 gives more built-in surrounding
+infrastructure (portal, identity, analytics) at the cost of being heavier to run.
+
 ## Comparison Table
 
 | Aspect | KrakenD Enterprise | WSO2 API Manager |

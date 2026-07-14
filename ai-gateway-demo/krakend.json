@@ -1,0 +1,54 @@
+{
+  "version": 3,
+  "$schema": "https://www.krakend.io/schema/krakend.json",
+  "name": "ai-gateway-demo",
+  "port": 8080,
+  "timeout": "30s",
+  "endpoints": [
+    {
+      "endpoint": "/chat",
+      "method": "POST",
+      "input_headers": ["X-Provider"],
+      "backend": [
+        {
+          "host": ["https://api.groq.com"],
+          "url_pattern": "/openai/v1/chat/completions",
+          "method": "POST",
+          "extra_config": {
+            "backend/conditional": {
+              "strategy": "header",
+              "name": "X-Provider",
+              "value": "groq"
+            },
+            "modifier/martian": {
+              "header.Modifier": {
+                "scope": ["request"],
+                "name": "Authorization",
+                "value": "Bearer {{ env "GROQ_API_KEY" }}"
+              }
+            }
+          }
+        },
+        {
+          "host": ["https://generativelanguage.googleapis.com"],
+          "url_pattern": "/v1beta/openai/chat/completions",
+          "method": "POST",
+          "extra_config": {
+            "backend/conditional": {
+              "strategy": "header",
+              "name": "X-Provider",
+              "value": "gemini"
+            },
+            "modifier/martian": {
+              "header.Modifier": {
+                "scope": ["request"],
+                "name": "Authorization",
+                "value": "Bearer {{ env "GEMINI_KEY" }}"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

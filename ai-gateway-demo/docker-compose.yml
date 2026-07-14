@@ -1,0 +1,12 @@
+services:
+  krakend_ai_gateway:
+    image: krakend/krakend-ee:2.13
+    container_name: krakend-ai-demo
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./.env
+    volumes:
+      - ./:/etc/krakend
+      - C:/krakend/LICENSE:/etc/krakend/LICENSE
+    command: ["run", "-d", "-c", "krakend.json"]

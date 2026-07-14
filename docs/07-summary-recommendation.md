@@ -32,7 +32,9 @@ Gateway covering provider routing, cost/token control, and prompt-level guardrai
 **[05 — Roles & Permissions](05-roles-permissions.md)**
 The one that started this whole investigation, confirmed: WSO2 has built-in roles for
 governing your own team's access to APIs (who can create/publish/edit/view). KrakenD's
-roles only govern external API consumers — no equivalent for internal team governance.
+roles are genuinely capable (JWT-role-based conditional routing — e.g. moderators get a
+premium model, others get a cheaper one) but scoped to the caller, not to internal team
+governance — no equivalent for who on our own team can create/edit/publish an API.
 
 **[06 — Licensing & Cost](06-licensing-cost.md)**
 KrakenD gates several features (SSO/SAML, audit logging, custom Go plugins, FIPS) behind

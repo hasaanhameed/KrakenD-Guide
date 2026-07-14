@@ -24,9 +24,18 @@ things in the same category. If they're not, that mismatch is itself a useful fi
   - **Analytics** — usage dashboards, reporting
 - Typically needs a database and more moving parts to run the full platform.
 
-*(Flag: the above is my current understanding of WSO2 API Manager's architecture — needs
-verification against WSO2's own docs, since we don't have a hands-on WSO2 instance the way
-we do with the KrakenD playground.)*
+## What KrakenD Does NOT Do
+
+KrakenD is not a tool for building APIs — it has no business logic and no database. It
+sits in front of APIs you already have. What it actually does:
+
+- **Routes** requests to existing backend services
+- **Aggregates** multiple backend responses into one response (its signature feature)
+- **Transforms** data — renames/filters fields, reshapes JSON
+- **Enforces** auth (JWT/OAuth), rate limiting, caching, CORS
+- **Protects** real backends — clients only ever talk to KrakenD, never directly to backends
+
+In short: a traffic cop + translator in front of your APIs, not a tool for creating them.
 
 ## Comparison Table
 

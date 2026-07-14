@@ -7,9 +7,10 @@ things in the same category. If they're not, that mismatch is itself a useful fi
 
 - Core product: an **API Gateway** — a single stateless binary, configured declaratively
   (`krakend.json` + `extra_config` blocks for features like auth, rate limiting, caching).
-- Enterprise edition builds on top of the open-source gateway core with: a dashboard/UI,
-  an AI Gateway (LLM traffic control), plugin marketplace, and additional governance
-  features.
+- Enterprise edition builds on top of the open-source gateway core with: an AI Gateway
+  (LLM traffic control), plugin marketplace, and additional governance features. Its
+  "UI" is KrakenD Designer — a browser-based config *editor* for authoring the config
+  file, not a running admin console like WSO2's.
 - No built-in database — stays stateless even in Enterprise.
 
 ## WSO2
@@ -55,8 +56,8 @@ infrastructure (portal, identity, analytics) at the cost of being heavier to run
 | Aspect | KrakenD Enterprise | WSO2 API Manager |
 |---|---|---|
 | Product scope | API Gateway (+ Enterprise add-ons) | Full API lifecycle platform |
-| Core components | Single gateway binary + dashboard | Publisher, Developer Portal, Gateway, Key Manager, Analytics |
+| Core components | Single gateway binary (config authored via KrakenD Designer editor) | Publisher, Developer Portal, Gateway, Key Manager, Analytics |
 | State | Stateless | Requires a database |
 | Developer portal | Not core; limited via Enterprise | Built-in |
 | Identity/OAuth | Via config/plugins | Built-in Key Manager |
-| Analytics | Enterprise dashboard | Built-in |
+| Analytics | Via external tools (e.g. Grafana), no built-in console | Built-in |

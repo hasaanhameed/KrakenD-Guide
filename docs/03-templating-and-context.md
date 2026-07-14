@@ -9,7 +9,7 @@ the template once with placeholders, feed in different "settings" files per envi
 and KrakenD stitches together the right final config automatically. This avoids
 copy-pasting near-identical config files across environments.
 
-**Some example templates KrakenD supports:**
+**Some example syntax you can use inside a KrakenD template:**
 
 - **Pulling a value from a settings file** — given `settings/urls.json` has
   `"users_api": "https://users-api.mycompany.com"`, a config template can insert it with

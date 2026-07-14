@@ -38,12 +38,11 @@ cost/token control, prompt-level guardrails, and governance. This is closer to f
 parity than most other areas we've compared so far — not an area where one side has an
 obvious gap.
 
-One difference worth noting: WSO2 names specific supported providers (OpenAI, Anthropic,
-Azure OpenAI, Mistral, AWS Bedrock) and specific techniques (semantic caching, adaptive
-routing) in its public materials, while KrakenD's public description stays at a more
-general capability level. This could mean WSO2 documents more explicitly, or that KrakenD
-covers this differently — worth checking actual configs/demos from the playground if we
-want a more concrete side-by-side.
+One difference worth noting: WSO2's public materials name specific supported providers
+(OpenAI, Anthropic, Azure OpenAI, Mistral, AWS Bedrock) and specific techniques (semantic
+caching, adaptive routing), while KrakenD's public description stays at a more general
+capability level. That may just reflect a documentation style difference rather than an
+actual capability gap.
 
 ## Comparison Table
 

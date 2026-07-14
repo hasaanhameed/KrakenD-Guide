@@ -15,19 +15,13 @@ things in the same category. If they're not, that mismatch is itself a useful fi
 ## WSO2
 
 - Core product (WSO2 API Manager): a **full API lifecycle management platform**, not just
-  a gateway. It bundles several components:
-  - **Publisher Portal** — where teams design, document, and configure APIs
-  - **Developer Portal (API Store)** — where developers discover/subscribe to APIs and
-    MCP servers, and manage API keys
-  - **API Gateway** — the traffic-enforcement layer (this is the part that's most
-    comparable to KrakenD); comes in "Classic" and "Federated" deployment options
-  - **Key Manager** — auth/token management; can use its own or plug in third-party
-    identity providers (Keycloak, Okta, Auth0)
-  - **Analytics/Traffic Manager** — pluggable, supports Moesif, ELK, or Choreo-based
-    analytics rather than one fixed built-in tool
-- Requires a database (MySQL, PostgreSQL, Oracle, etc.) — not a standalone binary.
-- Deployment is flexible: "All-in-One" (everything on one box) up to "Distributed" and
-  "Multi-DC" patterns for larger setups.
+  a gateway. It bundles several parts together:
+  - **Publisher** — where teams design and publish APIs
+  - **Developer Portal** — where developers discover and subscribe to APIs
+  - **Gateway** — the traffic-enforcement layer (the part most comparable to KrakenD)
+  - **Key Manager** — handles authentication/tokens
+  - **Analytics** — usage dashboards and reporting
+- Needs a database to run — not a standalone binary.
 
 ## What KrakenD Does NOT Do
 
@@ -48,8 +42,7 @@ In short: a traffic cop + translator in front of your APIs, not a tool for creat
 |---|---|---|
 | Product scope | API Gateway (+ Enterprise add-ons) | Full API lifecycle platform |
 | Core components | Single gateway binary + dashboard | Publisher, Developer Portal, Gateway, Key Manager, Analytics |
-| State | Stateless | Requires a database (MySQL/PostgreSQL/Oracle/etc.) |
-| Developer portal | Not core; limited via Enterprise | Built-in (API Store) |
-| Identity/OAuth | Via config/plugins | Built-in Key Manager, or plug in Keycloak/Okta/Auth0 |
-| Analytics | Enterprise dashboard | Pluggable (Moesif, ELK, Choreo) |
-| Deployment options | Single binary, typically one gateway instance | All-in-One, Distributed, or Multi-DC |
+| State | Stateless | Requires a database |
+| Developer portal | Not core; limited via Enterprise | Built-in |
+| Identity/OAuth | Via config/plugins | Built-in Key Manager |
+| Analytics | Enterprise dashboard | Built-in |

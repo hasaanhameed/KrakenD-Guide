@@ -1,0 +1,33 @@
+{
+  "version": 3,
+  "$schema": "https://www.krakend.io/schema/krakend.json",
+  "name": "ai-gateway-demo",
+  "port": 8080,
+  "timeout": "30s",
+  "endpoints": [
+    {
+      "endpoint": "/chat",
+      "method": "POST",
+      "backend": [
+        {
+          "host": ["https://api.groq.com"],
+          "url_pattern": "/openai/v1/chat/completions",
+          "method": "POST",
+          "extra_config": {
+            "ai/llm": {
+              "openai": {
+                "v1": {
+                  "credentials": "{{ env \"GROQ_API_KEY\" }}",
+                  "debug": false,
+                  "variables": {
+                    "model": "llama-3.1-8b-instant"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

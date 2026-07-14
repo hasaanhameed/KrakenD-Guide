@@ -15,9 +15,10 @@ side by side, with a load balancer splitting traffic between them. No copies nee
 to each other or share a database — they're all independent. That's what makes it
 lightweight and easy to scale.
 
-The only new piece Enterprise adds is a **dashboard** — a separate small tool for viewing
-configs/analytics. The actual gateway doing the traffic work is still that one simple
-program.
+Enterprise doesn't add a running admin console. Its "UI" is **KrakenD Designer**, a
+browser-based editor you use to *write* the config file — not a live dashboard you log
+into to manage traffic. The actual gateway doing the traffic work is still that one
+simple program.
 
 ## WSO2 API Manager — Several Pieces Working Together
 
@@ -48,7 +49,7 @@ to add them yourself.
 
 | Aspect | KrakenD Enterprise | WSO2 API Manager |
 |---|---|---|
-| Number of moving parts | One (gateway) + dashboard | Five (Publisher, Developer Portal, Gateway, Key Manager, Analytics) |
+| Number of moving parts | One (the gateway) | Five (Publisher, Developer Portal, Gateway, Key Manager, Analytics) |
 | Memory between requests | None — stateless | Yes — needs a database |
 | Scaling approach | Run more copies of the same program | Scale each piece independently |
 | Setup effort | Low — one binary + config file | Higher — multiple components + database |

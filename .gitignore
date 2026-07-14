@@ -1,0 +1,14 @@
+# Sensitive: KrakenD Enterprise trial license and credentials
+LICENSE
+*.env
+.env
+.env.*
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Node (in case any tooling gets added later)
+node_modules/

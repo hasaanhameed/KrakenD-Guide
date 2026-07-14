@@ -9,13 +9,16 @@ WSO2 answer very different questions when they talk about "roles."
 KrakenD's role-based access control is about **who is allowed to call which endpoint**,
 not about managing your internal team's permissions on the gateway itself.
 
-How it works: in the config, you declare known users/API keys and the roles each one
-holds. Then, per endpoint, you decide which roles are allowed in. If a caller's key
-doesn't have the right role, the request is rejected — same idea for a rate-limit quota
-tied to that key/role.
+How it works: roles come from JWT claims or declared API keys, checked per request. This
+is more capable than a simple allow/deny gate — KrakenD can route a request differently
+based on the caller's role. Our own playground demo does this for the AI Gateway: a
+`moderator` JWT role gets routed to a premium model (OpenAI), while other roles get routed
+to a cheaper one (Gemini) — same endpoint, different backend, picked by role.
 
-So KrakenD's roles answer: *"Is this external caller allowed to hit this API?"* — not
-*"Which of my teammates can edit/publish this API?"*
+So KrakenD's roles answer: *"What is this caller (app, user, or key) allowed to do or
+access?"* — not *"Which of my teammates can create, edit, or publish this API in the
+first place?"* It's a rich system, just scoped to the caller side, not to governing your
+own team's access to the gateway/platform itself.
 
 ## WSO2 — Built-In Organizational Roles for Managing the Platform
 

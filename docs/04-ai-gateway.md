@@ -17,6 +17,17 @@ KrakenD's AI Gateway is a dedicated Enterprise-only module for handling traffic 
 Confirmed Enterprise-only: this module requires a license that specifically includes AI
 Gateway capabilities.
 
+Worth being precise about what's genuinely a dedicated feature versus a pattern: the
+Unified LLM Interface (`ai/llm`) and token-based Cost Control (`governance/quota`) are
+real, purpose-built config keys. "Governance"/guardrails is not a separate mechanism —
+KrakenD's own documentation confirms it's built by combining features that already existed
+anyway (JSON Schema validation, rate limiting, conditional/sequential backend chaining).
+Nothing is guardrailed by default; it has to be assembled per endpoint. A rule-based
+guardrail (blocking known bad patterns) is fully config-only. A smarter, AI-judged
+guardrail (e.g. catching prompt injection) additionally needs an external classifier model
+that isn't part of KrakenD at all — you bring and host that yourself, and KrakenD just
+calls it like any other backend.
+
 ## WSO2 — AI Gateway
 
 WSO2 also has its own dedicated AI Gateway, covering very similar ground:

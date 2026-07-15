@@ -21,6 +21,7 @@ things in the same category. If they're not, that mismatch is itself a useful fi
   - **Developer Portal** — where developers discover and subscribe to APIs
   - **Gateway** — the traffic-enforcement layer (the part most comparable to KrakenD)
   - **Key Manager** — handles authentication/tokens
+  - **Traffic Manager** — enforces rate-limiting/throttling policies (a distinct component from the Gateway in WSO2's own architecture docs)
   - **Analytics** — usage dashboards and reporting
 - Needs a database to run — not a standalone binary.
 
@@ -43,9 +44,11 @@ Most of the list above — routing, auth enforcement, rate limiting, caching, CO
 real backends — is standard gateway duty. WSO2's Gateway component does these too.
 
 The real difference is **aggregation**. In KrakenD, combining multiple backend calls into
-one response is a config block — list the backends under one endpoint, done. In WSO2,
-this isn't a built-in declarative feature; it takes custom mediation logic (a mediator/
-sequence you write) to achieve the same thing.
+one response is a config block — list the backends under one endpoint, done. WSO2 does
+have built-in mediators for this too (Clone + Aggregate, or the newer Scatter-Gather
+Mediator) — it's not custom Java code either. The real gap is verbosity, not capability:
+KrakenD's version is one config block, WSO2's is a short sequence of mediators wired
+together in its mediation language.
 
 So it's less "WSO2 can't do this" and more: KrakenD makes a few things (especially
 aggregation) much faster to set up, while WSO2 gives more built-in surrounding
@@ -56,7 +59,7 @@ infrastructure (portal, identity, analytics) at the cost of being heavier to run
 | Aspect | KrakenD Enterprise | WSO2 API Manager |
 |---|---|---|
 | Product scope | API Gateway (+ Enterprise add-ons) | Full API lifecycle platform |
-| Core components | Single gateway binary (config authored via KrakenD Designer editor) | Publisher, Developer Portal, Gateway, Key Manager, Analytics |
+| Core components | Single gateway binary (config authored via KrakenD Designer editor) | Publisher, Developer Portal, Gateway, Key Manager, Traffic Manager, Analytics |
 | State | Stateless | Requires a database |
 | Developer portal | Not core; limited via Enterprise | Built-in |
 | Identity/OAuth | Via config/plugins | Built-in Key Manager |

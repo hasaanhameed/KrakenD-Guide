@@ -22,6 +22,15 @@
   deployment uses and what level of support you want. Pricing isn't public — requires a
   quote from WSO2.
 
+Worth being precise about naming here, since it's a real source of confusion: **WSO2 API
+Manager** (Apache 2.0, self-hosted, all components included, no cap on APIs published) is
+a different thing from **WSO2 API Platform** — a newer, separate commercial offering
+(Trial / Pay-As-You-Go / Enterprise tiers) where WSO2 hosts and runs it for you in their
+cloud, or, at the Enterprise tier only, supports a self-hosted deployment on your own
+infrastructure. That pricing page is about paying for WSO2's hosting and support — it
+isn't a toll on self-hosting the free, open-source API Manager, which sits entirely outside
+that pricing structure.
+
 ## Practical Difference
 
 The two companies structure cost differently:
